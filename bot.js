@@ -9,7 +9,7 @@ const controller = Botkit.slackbot({
   json_file_store: './db_slack_bot/'
 });
 
-controller.spawn({
+var bot = controller.spawn({
   token: process.env.token
 }).startRTM();
 

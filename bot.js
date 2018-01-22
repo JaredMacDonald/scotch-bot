@@ -10,9 +10,15 @@ const controller = Botkit.slackbot({
 });
 
 controller.spawn({
-  token: process.env.token,
-  port: process.env.PORT
+  token: process.env.token
 }).startRTM();
+
+//prepare the webhook
+controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
+  controller.createWebhookEndpoints(webserver, bot, function() {
+      // handle errors...
+  });
+});
 
 // here starts the action ---
 

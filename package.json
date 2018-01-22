@@ -1,0 +1,19 @@
+{
+  "name": "scotchbot",
+  "version": "1.0.0",
+  "description": "Consierge of the Snowed In Studios Scotch Club",
+  "main": "scotchbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://JaredMacDonald@bitbucket.org/JaredMacDonald/scotchbot.git"
+  },
+  "author": "Jared MacDonald",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/JaredMacDonald/scotchbot#readme",
+  "dependencies": {
+    "botkit": "^0.5.5"
+  }
+}

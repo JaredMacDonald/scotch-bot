@@ -4,7 +4,7 @@
   "description": "Consierge of the Snowed In Studios Scotch Club",
   "main": "scotchbot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"start": "node bot.js"
   },
   "repository": {
     "type": "git",

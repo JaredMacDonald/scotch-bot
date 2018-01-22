@@ -11,6 +11,7 @@ const controller = Botkit.slackbot({
 
 controller.spawn({
   token: process.env.token,
+  port: process.env.PORT
 }).startRTM();
 
 // here starts the action ---

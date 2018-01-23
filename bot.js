@@ -3,6 +3,7 @@ if (!process.env.token) {
 }
 
 const Botkit = require('botkit');
+const http = require("http");
 
 const controller = Botkit.slackbot({
   debug: true,
@@ -19,6 +20,10 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
       // handle errors...
   });
 });
+
+setInterval(function() {
+    http.get("https://scotch-bot.herokuapp.com");
+}, 900000); // every 15 minutes (900000)
 
 // here starts the action ---
 

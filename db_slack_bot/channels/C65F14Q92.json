@@ -1,1 +1,15 @@
-{"id":"D650YUVSL","scotches":[{"name":"Glenlivet 15","value":"$80","description":"The unique use of French Oak increases the intensity of the whisky, resulting in a richer and creamier finish along with a distinctive spiciness. Deep golden in colour expect aromas and flavours of crème brûlée, sweet apple, gentle smokiness and peat alongside of lavendar notes followed by a rich and complex finish."},{"name":"Lagavulin 16","value":"$125.00","description":"Considered by many to be the benchmark for Islay malts this classic pours a golden amber colour and wafts from your glass with intense smoky peat and iodine. The palate is full flavour, rich and smooth with peat, figs, dates, and vanilla followed by an enduring smoky and dry finish."}]}
+{  
+   "id":"D650YUVSL",
+   "scotches":[  
+      {  
+         "name":"Glengoyne 18",
+         "value":"$170",
+         "description":"Medium amber; aromas of malt, chocolate, tree fruit, spice and vanilla, with notes of orange peel, citrus and dried flowers; palate is round, warm, with balanced sweetness, showing flavours of vanilla, cooked fruit, cocoa and marmalade, with notes of honey, spice, butterscotch, Sherry and nut; finish is dry and lingering."
+      },
+      {  
+         "name":"Ballantine's 12",
+         "value":"$125.00",
+         "description":"Ballentine's 12 years old boasts a perfectly balance creamy character with hints of vanilla, oak and sweet floral aromas providing a long and rounded finish.  Our precious and classic blend contains an extensive selection of whiskies from Scotland's finest distilleries."
+      }
+   ]
+}

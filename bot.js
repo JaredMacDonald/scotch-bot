@@ -22,7 +22,7 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
 });
 
 setInterval(function() {
-    http.get("https://scotch-bot.herokuapp.com");
+    http.get("http://scotch-bot.herokuapp.com");
 }, 900000); // every 15 minutes (900000)
 
 // here starts the action ---

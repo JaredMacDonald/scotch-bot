@@ -10,6 +10,11 @@
          "name":"Ballantine's 12",
          "value":"$125.00",
          "description":"Ballentine's 12 years old boasts a perfectly balance creamy character with hints of vanilla, oak and sweet floral aromas providing a long and rounded finish.  Our precious and classic blend contains an extensive selection of whiskies from Scotland's finest distilleries."
-      }
+      },
+	  {
+		 "name":"Jura Prophecy",
+         "value":"$120.00",
+         "description":"Medium amber with yellow/green highlights; complex nutty, toffee and fruity aromas, which are pronounced and capable of enrobing the smoky notes; full and round on the palate, with sweet toffee, chocolate, citrus and spice, and the bite of peat smoke as a foundation; smoothly sweet and lengthy, with well-integrated alcohol."
+	  }
    ]
 }

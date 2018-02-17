@@ -1,3 +1,7 @@
+import { scheduledJobs } from '../../../../Users/zymat/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/node-schedule';
+
+const schedule = require('node-schedule');
+
 if (!process.env.token) {
   process.exit(1);
 }
@@ -24,6 +28,15 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
 setInterval(function() {
     http.get("http://scotch-bot.herokuapp.com");
 }, 900000); // every 15 minutes (900000)
+
+var rule = new schedule.RecurrenceRule();
+rule.dayOfWeek = 6;
+rule.hour = 11;
+rule.minute = 40;
+
+var job = schedule.scheduledJobs(rule, () => {
+  bot.say("@here, Happy :scotch: day everyone!  Don't forget to bring your :moneybag:!");
+})
 
 // here starts the action ---
 

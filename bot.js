@@ -16,6 +16,19 @@ var bot = controller.spawn({
   token: process.env.token
 }).startRTM();
 
+// fetch and store team information
+bot.api.team.info({}, function (err, res) {
+  if (err) {
+    return console.error(err)
+  }
+
+  controller.storage.teams.save({id: res.team.id}, (err) => {
+    if (err) {
+      console.error(err)
+    }
+  })
+})
+
 //prepare the webhook
 controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
   controller.createWebhookEndpoints(webserver, bot, function() {
@@ -29,17 +42,35 @@ setInterval(function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = 6;
-rule.hour = 17;
-rule.minute = 5;
+rule.hour = 14;
+rule.minute = 0;
 
 var job = schedule.scheduleJob(rule, () => {
   bot.say({ 
-    text: "@here, Happy :scotch: day everyone!  Don't forget to bring your :moneybag:!",
+    text: "<!channel> Happy :scotch: day everyone!  Don't forget to bring your :moneybag:!",
     channel: 'C65F14Q92' 
   });
 })
 
 // here starts the action ---
+controller.on('slash_command', (bot, message) => {
+   // Validate Slack verify token
+  //  if (message.token !== VERIFY_TOKEN) {
+  //   return bot.res.send(401, 'Unauthorized')
+  // }
+
+  switch (message.command) {
+    case '/scotchbotsay':
+      var whatToSay = message.match[1];
+      if(whatToSay != null || whatToSay != undefined ) 
+      {
+        bot.reply(message, message.match[1])
+      }
+      break
+    default:
+      bot.replyPrivate(message, "Sorry, I'm not sure what that command is")
+  }
+})
 
 controller.on('member_joined_channel', function(bot, message)
 {

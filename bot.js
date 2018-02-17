@@ -29,8 +29,8 @@ setInterval(function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = 6;
-rule.hour = 11;
-rule.minute = 52;
+rule.hour = 16;
+rule.minute = 56;
 
 var job = schedule.scheduleJob(rule, () => {
   bot.say("@here, Happy :scotch: day everyone!  Don't forget to bring your :moneybag:!");

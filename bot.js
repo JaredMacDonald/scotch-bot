@@ -36,9 +36,10 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
   });
 });
 
-setInterval(function() {
+/*setInterval(function() {
     http.get("http://scotch-bot.herokuapp.com");
 }, 900000); // every 15 minutes (900000)
+*/
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = 6;

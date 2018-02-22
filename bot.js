@@ -37,6 +37,7 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
       // handle errors...
   });
 });
+console.log(useKeepAlive);
 if(useKeepAlive === true) {
   setInterval(function() {
       http.get("http://scotch-bot.herokuapp.com");

@@ -5,6 +5,8 @@ if (!process.env.token) {
 const Botkit = require('botkit');
 const http = require("http");
 
+const useKeepAlive = process.env.useKeepAlive;
+
 const controller = Botkit.slackbot({
   debug: true,
   json_file_store: './db_slack_bot/'
@@ -21,9 +23,11 @@ controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
   });
 });
 
-setInterval(function() {
-    http.get("http://scotch-bot.herokuapp.com");
-}, 900000); // every 15 minutes (900000)
+if(useKeepAlive) {
+  setInterval(function() {
+      http.get("http://scotch-bot.herokuapp.com");
+  }, 900000); // every 15 minutes (900000) 
+}
 
 // here starts the action ---
 

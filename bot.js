@@ -46,7 +46,7 @@ if(useKeepAlive === "true") {
 }
 
 var rule = new schedule.RecurrenceRule();
-rule.dayOfWeek = 6;
+rule.dayOfWeek = 5;
 rule.hour = 14;
 rule.minute = 0;
 

@@ -45,14 +45,26 @@ if(useKeepAlive === "true") {
   }, 900000); // every 15 minutes (900000) 
 }
 
-var rule = new schedule.RecurrenceRule();
-rule.dayOfWeek = 5;
-rule.hour = 14;
-rule.minute = 0;
+var morningReminderRule = new schedule.RecurrenceRule();
+morningReminderRule.dayOfWeek = 6;
+morningReminderRule.hour = 14;
+morningReminderRule.minute = 0;
 
-var job = schedule.scheduleJob(rule, () => {
+var morningJob = schedule.scheduleJob(morningReminderRule, () => {
   bot.say({ 
     text: "<!channel> Happy :scotch: day everyone!  Don't forget to bring your :moneybag:!",
+    channel: 'C65F14Q92' 
+  });
+})
+
+var afternoonReminderRule = new schedule.RecurrenceRule();
+afternoonReminderRule.dayOfWeek = 6;
+afternoonReminderRule.hour = 20;
+afternoonReminderRule.minute = 0;
+
+var afternoonJob = schedule.scheduleJob(afternoonReminderRule, () => {
+  bot.say({ 
+    text: "<!channel> Time for :scotch:! Grab your :moneybag: and meet in the kitchen!",
     channel: 'C65F14Q92' 
   });
 })
@@ -234,4 +246,8 @@ hears(['help', 'commands'], 'direct_mention, direct_message, mention', (bot,mess
         }
   
   bot.reply(message, responseString);
+});
+
+hears('Good bot', 'direct_mention, direct_message, mention, message', (bot,message) => {
+  bot.reply(message, "Thanks!");
 });

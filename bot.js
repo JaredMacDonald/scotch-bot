@@ -46,7 +46,7 @@ if(useKeepAlive === "true") {
 }
 
 var morningReminderRule = new schedule.RecurrenceRule();
-morningReminderRule.dayOfWeek = 6;
+morningReminderRule.dayOfWeek = 5;
 morningReminderRule.hour = 14;
 morningReminderRule.minute = 0;
 
@@ -58,7 +58,7 @@ var morningJob = schedule.scheduleJob(morningReminderRule, () => {
 })
 
 var afternoonReminderRule = new schedule.RecurrenceRule();
-afternoonReminderRule.dayOfWeek = 6;
+afternoonReminderRule.dayOfWeek = 5;
 afternoonReminderRule.hour = 20;
 afternoonReminderRule.minute = 0;
 

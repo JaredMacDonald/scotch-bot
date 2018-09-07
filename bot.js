@@ -92,7 +92,8 @@ controller.on('slash_command', (bot, message) => {
 controller.on('member_joined_channel', function(bot, message)
 {
     var user = message['user'];
-    bot.reply(message, 'Welcome to the Scotch Club channel <@' + user + '}>')
+    bot.reply(message, 'Welcome to the Scotch Club channel <@' + user + '>')
+
 });
 
 const { hears, storage: { channels } } = controller;

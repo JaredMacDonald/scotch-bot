@@ -14,7 +14,7 @@
   "license": "ISC",
   "homepage": "",
   "dependencies": {
-    "botkit": "^0.5.5",
+    "botkit": "^0.7.2",
     "node-schedule": "1.3.0"
   }
 }

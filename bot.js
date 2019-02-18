@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
     fs.createReadStream("./index.html", "UTF-8").pipe(res);
   }
 }).listen(process.env.port, null, () => {
-  console.log("http server created.")
+  console.log("http server created, listen on port " + process.env.port );
 });
 
 const useKeepAlive = process.env.useKeepAlive;
@@ -42,12 +42,18 @@ bot.api.team.info({}, function (err, res) {
 })
 
 //prepare the webhook
-controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
-  controller.createHomepageEndpoint(controller.webserver)
-  .createWebhookEndpoints(webserver, bot, function() {
-      // handle errors...
-  });
-});
+// controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
+//   controller.createHomepageEndpoint(controller.webserver, () => {
+//     webserver.get('/', function(req, res) {
+
+//       res.send('Jared Rules!!');
+
+//   });
+//   })
+//   .createWebhookEndpoints(webserver, bot, function() {
+//       // handle errors...
+//   });
+// });
 console.log(useKeepAlive);
 if(useKeepAlive === "true") {
   console.log("using keep alive");

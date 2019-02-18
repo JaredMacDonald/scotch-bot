@@ -7,6 +7,14 @@ if (!process.env.token) {
 const Botkit = require('botkit');
 const http = require("http");
 
+http.createServer(function (req, res) {
+  if(req.method === "GET") 
+  {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    fs.createReadStream("./index.html", "UTF-8").pipe(res);
+  }
+}).listen(3000);
+
 const useKeepAlive = process.env.useKeepAlive;
 
 const controller = Botkit.slackbot({

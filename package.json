@@ -7,6 +7,10 @@
     "start": "node bot.js"
   },
   "author": "Jared MacDonald",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JaredMacDonald/scotch-bot.git"
+  },
   "license": "ISC",
   "homepage": "",
   "dependencies": {

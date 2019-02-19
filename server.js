@@ -34,10 +34,10 @@ app.listen(process.env.PORT, (err) => {
 });
 
 exports.GetAllScotches = function(bot, message) {
-    axios.get(`https://scotch-bot.herokuapp.com/scotch`)
-
+  console.log("server.GetAllScotches called!");
+    axios.get("/scotch")
     .then((res) => {
-
+      console.log("server.GetAllScotches.then called!");
         var data = res.data;
         
         var response = '';

@@ -13,7 +13,7 @@
 </header>
 <script>
     $( document ).ready(function() {
-        $.get("https://scotch-bot.herokuapp.com/scotch", function(res) {
+        $.get("/scotch", function(res) {
             populateTimesheet(res);
         });
     });

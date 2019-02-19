@@ -22,7 +22,9 @@ exports.createScotch = function(req, res) {
 }
 
 exports.getAllScotch = function(req, res) {
+    console.log("ScotchesController.getAllScotch called!");
     Scotch.find(function(err, entries) {
+        console.log("ScotchesController.getAllScotch.Find called!");
         if(err)
             res.send(err);
         

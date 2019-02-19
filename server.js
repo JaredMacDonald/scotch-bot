@@ -34,7 +34,7 @@ app.listen(process.env.PORT, (err) => {
 });
 
 exports.GetAllScotches = function(bot, message) {
-    axios.get(`http://localhost:${process.env.PORT}/scotch`)
+    axios.get(`https://localhost:${process.env.PORT}/scotch`)
     .then((res) => {
 
         var data = res.data;

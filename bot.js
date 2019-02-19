@@ -12,7 +12,7 @@ const Botkit = require('botkit');
 const useKeepAlive = process.env.useKeepAlive;
 
 const controller = Botkit.slackbot({
-  debug: true,
+  debug: false,
   json_file_store: './db_slack_bot/'
 });
 

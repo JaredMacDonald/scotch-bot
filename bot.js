@@ -1,21 +1,13 @@
+
 const schedule = require('node-schedule');
+const server = require('./server');
+require('./models/scotches');
 
 if (!process.env.token) {
   process.exit(1);
 }
 
 const Botkit = require('botkit');
-const http = require("http");
-
-http.createServer(function (req, res) {
-  if(req.method === "GET") 
-  {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    fs.createReadStream("./index.html", "UTF-8").pipe(res);
-  }
-}).listen(process.env.port, null, () => {
-  console.log("http server created, listen on port " + process.env.port );
-});
 
 const useKeepAlive = process.env.useKeepAlive;
 
@@ -41,19 +33,6 @@ bot.api.team.info({}, function (err, res) {
   })
 })
 
-//prepare the webhook
-// controller.setupWebserver(process.env.PORT || 3001, function(err, webserver) {
-//   controller.createHomepageEndpoint(controller.webserver, () => {
-//     webserver.get('/', function(req, res) {
-
-//       res.send('Jared Rules!!');
-
-//   });
-//   })
-//   .createWebhookEndpoints(webserver, bot, function() {
-//       // handle errors...
-//   });
-// });
 console.log(useKeepAlive);
 if(useKeepAlive === "true") {
   console.log("using keep alive");
@@ -84,26 +63,6 @@ var afternoonJob = schedule.scheduleJob(afternoonReminderRule, () => {
     text: "<!channel> Time for :scotch:! Grab your :moneybag: and meet in the kitchen!",
     channel: 'C65F14Q92' 
   });
-})
-
-// here starts the action ---
-controller.on('slash_command', (bot, message) => {
-   // Validate Slack verify token
-  //  if (message.token !== VERIFY_TOKEN) {
-  //   return bot.res.send(401, 'Unauthorized')
-  // }
-
-  switch (message.command) {
-    case '/scotchbotsay':
-      var whatToSay = message.match[1];
-      if(whatToSay != null || whatToSay != undefined ) 
-      {
-        bot.reply(message, message.match[1])
-      }
-      break
-    default:
-      bot.replyPrivate(message, "Sorry, I'm not sure what that command is")
-  }
 })
 
 controller.on('member_joined_channel', function(bot, message)
@@ -152,35 +111,8 @@ hears('rules', 'direct_mention,direct_message,mention', (bot, message) => {
 });
 
 hears('menu', 'direct_mention,direct_message,mention', (bot, message) => {
-  // Get the saved menu and display each item.
-  const { user, channel, text } = message;
 
-  try {
-    channels.get("C65F14Q92", (err, data) => {
-      //if(err) throw err;
-
-      if( data && 'scotches' in data) {
-        const { scotches } = data;
-
-        var response = {
-          "text": '*The Scotch Club Menu:*\n\n',
-          "mrkdwn": true
-        }
-        for(var i = 0; i < scotches.length; i++)
-        {
-          response.text += '*Name:* ' + scotches[i].name + '\n'
-          + '*Value:* ' + scotches[i].value + '\n'
-          + '*Description:* ' + scotches[i].description + '\n\n';
-        }
-
-        bot.reply(message, response);
-      }
-
-    });
-  }
-  catch(error) {
-    console.log(error);
-  }
+  server.GetAllScotches(bot, message);
 });
 
 hears('add scotch (.*), (.*), (.*)', 'direct_mention,direct_message,mention', (bot, message) => {

@@ -7,8 +7,12 @@ let connection;
 exports.connectToMongo = () =>  {
     //mongoose.connect(this.mongoDatabaseUrl);
     console.log(this.mongoDatabaseUrl);
-    mongoose.connect(this.mongoDatabaseUrl, { useNewUrlParser: true }, (err) => {
-      console.log('Error on start: ' + err.message);
+    mongoose.connect(this.mongoDatabaseUrl, { useNewUrlParser: true })
+    .then(() => {
+      console.log('Database connected.');
+    })
+    .catch((err) => {
       console.log('Error on start: ' + err.stack);
+      //process.exit(1);
     });
 };

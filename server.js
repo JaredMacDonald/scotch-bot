@@ -56,7 +56,7 @@ exports.GetAllScotches = function(bot, message) {
 
           bot.reply(message, response);
     })
-    .catch((error) => {
+    .catch((err) => {
         console.log(err);
     });
 }

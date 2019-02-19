@@ -6,12 +6,9 @@ let connection;
 
 exports.connectToMongo = () =>  {
     //mongoose.connect(this.mongoDatabaseUrl);
-    mongoose.connect(this.mongoDatabaseUrl)
-  .then(() => {
-    //server.start();
-  })
-  .catch((err) => {
-    console.log('Error on start: ' + err.stack);
-    process.exit(1);
-  });
+    console.log(this.mongoDatabaseUrl);
+    mongoose.connect(this.mongoDatabaseUrl, { useNewUrlParser: true }, (err) => {
+      console.log('Error on start: ' + err.message);
+      console.log('Error on start: ' + err.stack);
+    });
 };

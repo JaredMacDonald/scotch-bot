@@ -4,60 +4,68 @@
 <html lang="en">
 <head>
     <% include ../partials/head %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body class="container">
 
 <header>
     <% include ../partials/header %>
 </header>
+<script>
+    $( document ).ready(function() {
+        $.get("http://localhost:3000/scotch", function(res) {
+            populateTimesheet(res);
+        });
+    });
 
+    var populateTimesheet = function(entries) {
+        var div = $( "#scotchlist-tbody" );
+        entries.forEach(elem => {
+        $('#scotchlist-tbody').append('<tr> <th scope="row">' + elem.name + '</th><td>' + elem.price + '</td><td><a href='
+        + elem.lcboLink + '>LCBO Store Page</a></td></tr>');
+    });
+    }
+</script>
 <main>
+    <div class="jumbotron">
+        <h3>Current Scotch:</h3>
+        <table id="scotch-list" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">LCBO Link</th>
+                </tr>
+            </thead>
+            <tbody id="scotchlist-tbody">
+
+            </tbody>
+        </table>
+        <button id="addEntry" class="btn btn-sm"><span class="fas fa-plus"></span></button>
+    </div>
     <div class="jumbotron">
         <h3>Add Scotch</h3>
         <form action="/scotch" method="POST">
             <div class="input-group" >
-                <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                <span class="input-group-addon"><i class="fas fa-glass-whiskey"></i></span>
                 <input type="text" class="form-control" name="name" placeholder="Scotch Name"><br>
             </div>
             <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+                <span class="input-group-addon"><i class="fas fa-link"></i></span>
                 <input type="text"  class="form-control" name="lcboLink" placeholder="LCBO Link"><br>
             </div>
             <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-vcard fa-fw" aria-hidden="true"></i></span>
+                <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
                 <input type="text"  class="form-control" name="price" placeholder="Scotch Price"><br>
             </div>
             <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-mobile fa-fw" aria-hidden="true"></i></span>
+                <span class="input-group-addon"><i class="fas fa-image"></i></span>
                 <input type="text"  class="form-control" name="imgLink" placeholder="Image Link"><br>
             </div>
             <br>
             <input type="submit" class="btn btn-primary" value="Create">
         </form>
     </div>
-    <!-- <div class="jumbotron">
-        <h3>Add Scotch</h3>
-        <form action="/scotch" method="POST">
-            <div class="input-group" >
-                <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="name" placeholder="Scotch Name"><br>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                <input type="text"  class="form-control" name="lcboLink" placeholder="LCBO Link"><br>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-vcard fa-fw" aria-hidden="true"></i></span>
-                <input type="text"  class="form-control" name="price" placeholder="Scotch Price"><br>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-mobile fa-fw" aria-hidden="true"></i></span>
-                <input type="text"  class="form-control" name="imgLink" placeholder="Image Link"><br>
-            </div>
-            <br>
-            <input type="submit" class="btn btn-primary" value="Create">
-        </form>
-    </div> -->
 </main>
 
 <footer>
